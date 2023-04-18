@@ -4,9 +4,21 @@ import styled from "styled-components";
 import { DestinationsData } from "../../context/DataContext";
 
 function TopSlider() {
+  const [position, setPosition] = useState(1);
+  const [randomDestinations, setRandomDestinations] = useState([]);
+
   const { destinations } = DestinationsData();
 
-  const [position, setPosition] = useState(1);
+  useEffect(() => {
+    const filterDestinations = () => {
+      const shuffled = [...destinations].sort(() => 0.5 - Math.random());
+      const filtered = shuffled.slice(0, 3);
+
+      setRandomDestinations(filtered);
+    };
+
+    filterDestinations();
+  }, []);
 
   const prevSlide = () => {
     if (position === 2) {
