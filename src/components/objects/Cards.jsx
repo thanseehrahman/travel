@@ -1,20 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { DestinationsData } from "../../context/DataContext";
 
 function Cards() {
+  const { destinations } = DestinationsData();
+
   return (
     <Grid>
-      <Item to="/destination">
-        <Overlay className="overlay" />
-        <Badge className="badge">
-          <Title>Queenstown, New Zealand</Title>
-        </Badge>
-        <Content className="content">
-          <Name>Queenstown</Name>
-          <Coordinates>45.0302° S, 168.6615° E</Coordinates>
-        </Content>
-      </Item>
+      {destinations.map((destination, index) => (
+        <Item
+          to={"/destination/" + destination.id}
+          style={{
+            background: `url(${destination.images.image1.small}) center center/cover no-repeat`,
+            animationDelay: `${index / 4}s`,
+          }}
+          key={index}
+        >
+          <Overlay className="overlay" />
+          <Badge className="badge">
+            <Title>
+              {destination.name}, {destination.country}
+            </Title>
+          </Badge>
+          <Content className="content">
+            <Name>{destination.name}</Name>
+            <Coordinates>{destination.coordinates}</Coordinates>
+          </Content>
+        </Item>
+      ))}
     </Grid>
   );
 }
