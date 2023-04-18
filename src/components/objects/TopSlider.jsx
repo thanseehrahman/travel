@@ -6,6 +6,7 @@ import { DestinationsData } from "../../context/DataContext";
 function TopSlider() {
   const [position, setPosition] = useState(1);
   const [randomDestinations, setRandomDestinations] = useState([]);
+  const [randomImage, setRandomImage] = useState(0);
 
   const { destinations } = DestinationsData();
 
@@ -18,6 +19,13 @@ function TopSlider() {
     };
 
     filterDestinations();
+
+    const setImageNumber = () => {
+      const randomNumber = Math.floor(Math.random() * 5) + 1;
+      setRandomImage(randomNumber);
+    };
+
+    setImageNumber();
   }, []);
 
   const positions = {
@@ -70,7 +78,9 @@ function TopSlider() {
           <Slide
             to={"/destination" + destination.id}
             style={{
-              background: `url(${destination.images.image2.medium}) center center/cover no-repeat`,
+              background: `url(${
+                destination.images["image" + randomImage].medium
+              }) center center/cover no-repeat`,
               transform: position === index ? styles.activeScale : styles.scale,
             }}
             key={index}
