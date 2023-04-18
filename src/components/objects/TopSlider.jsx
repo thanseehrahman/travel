@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { DestinationsData } from "../../context/DataContext";
@@ -19,6 +19,13 @@ function TopSlider() {
 
     filterDestinations();
   }, []);
+
+  const styles = {
+    scale: "scale(0.95)",
+    activeScale: "scale(1)",
+    overlay: "rgba(255,255,255,0.6)",
+    activeOverlay: "rgba(255,255,255,0.1)",
+  };
 
   const prevSlide = () => {
     if (position === 2) {
@@ -45,9 +52,23 @@ function TopSlider() {
         <Icon src="/images/icons/right.svg" />
       </Button>
       <Slider>
-        <Slide to="/destination">
-          <Overlay />
-        </Slide>
+        {randomDestinations.map((destination, index) => (
+          <Slide
+            to={"/destination" + destination.id}
+            style={{
+              background: `url(${destination.images.image2.medium}) center center/cover no-repeat`,
+              transform: position === index ? styles.activeScale : styles.scale,
+            }}
+            key={index}
+          >
+            <Overlay
+              style={{
+                background:
+                  position === index ? styles.activeOverlay : styles.overlay,
+              }}
+            />
+          </Slide>
+        ))}
       </Slider>
     </Container>
   );
