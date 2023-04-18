@@ -20,6 +20,12 @@ function TopSlider() {
     filterDestinations();
   }, []);
 
+  const positions = {
+    prev: { left: "0", transform: "translateX(0)" },
+    center: { left: "50%", transform: "translateX(-50%)" },
+    next: { left: "100%", transform: "translateX(-100%)" },
+  };
+
   const styles = {
     scale: "scale(0.95)",
     activeScale: "scale(1)",
@@ -51,7 +57,15 @@ function TopSlider() {
       <Button onClick={nextSlide} className="next">
         <Icon src="/images/icons/right.svg" />
       </Button>
-      <Slider>
+      <Slider
+        style={
+          position === 0
+            ? positions.prev
+            : position === 2
+            ? positions.next
+            : positions.center
+        }
+      >
         {randomDestinations.map((destination, index) => (
           <Slide
             to={"/destination" + destination.id}
