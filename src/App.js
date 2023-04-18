@@ -3,6 +3,7 @@ import Home from "./components/pages/Home";
 import Header from "./components/Header";
 import { DataContextProvider } from "./context/DataContext";
 import Destination from "./components/pages/Destination";
+import About from "./components/pages/About";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route element={<Home />} exact path="/" />
+        <Route element={<About />} path="/about" />
         <Route element={<Destination />} path="/destination/:id" />
       </Routes>
     </DataContextProvider>
