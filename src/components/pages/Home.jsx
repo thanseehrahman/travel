@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import TopSlider from "../objects/TopSlider";
 
 function Home() {
   return (
@@ -7,6 +8,7 @@ function Home() {
       <Wrap>
         <Heading>Venture to New Horizons</Heading>
         <Description>Your Next Travel Destination</Description>
+        <TopSlider />
       </Wrap>
     </Container>
   );
