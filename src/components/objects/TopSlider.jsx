@@ -29,7 +29,7 @@ function TopSlider() {
     };
 
     setImageNumber();
-  }, []);
+  }, [destinations]);
 
   const positions = {
     prev: { left: "0", transform: "translateX(0)" },
@@ -79,7 +79,7 @@ function TopSlider() {
       >
         {randomDestinations.map((destination, index) => (
           <Slide
-            to={"/destination" + destination.id}
+            to={"/destination/" + destination.id}
             style={{
               background: `url(${
                 loading
@@ -108,6 +108,10 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   transition: all 0.6s ease-in-out;
+
+  @media (max-width: 640px) {
+    height: 210px;
+  }
 `;
 
 const Button = styled.button`
@@ -129,11 +133,20 @@ const Button = styled.button`
   &.next {
     right: 0;
   }
+
+  @media (max-width: 640px) {
+    height: 32px;
+    width: 32px;
+  }
 `;
 
 const Icon = styled.img`
   display: block;
   height: 30px;
+
+  @media (max-width: 640px) {
+    height: 15px;
+  }
 `;
 
 const Slider = styled.div`
@@ -145,6 +158,10 @@ const Slider = styled.div`
   align-items: center;
   gap: 30px;
   transition: all 0.6s ease-out;
+
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
 `;
 
 const Slide = styled(Link)`
@@ -154,7 +171,17 @@ const Slide = styled(Link)`
   position: relative;
   display: block;
   box-shadow: 10px 18px 40px rgba(0, 0, 0, 0.1);
-  transition: all 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+
+  @media (max-width: 980px) {
+    width: 470px;
+  }
+  @media (max-width: 640px) {
+    width: 300px;
+  }
+  @media (max-width: 480px) {
+    width: 260px;
+  }
 `;
 
 const Overlay = styled.div`
