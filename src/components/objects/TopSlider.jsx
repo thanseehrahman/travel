@@ -1,14 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { DestinationsData } from "../../context/DataContext";
 
 function TopSlider() {
+  const { destinations } = DestinationsData();
+
+  const [position, setPosition] = useState(1);
+
+  const prevSlide = () => {
+    if (position === 2) {
+      setPosition(1);
+    } else {
+      setPosition(0);
+    }
+  };
+
+  const nextSlide = () => {
+    if (position === 0) {
+      setPosition(1);
+    } else {
+      setPosition(2);
+    }
+  };
+
   return (
     <Container>
-      <Button className="prev">
+      <Button onClick={prevSlide} className="prev">
         <Icon src="/images/icons/left.svg" />
       </Button>
-      <Button className="next">
+      <Button onClick={nextSlide} className="next">
         <Icon src="/images/icons/right.svg" />
       </Button>
       <Slider>
