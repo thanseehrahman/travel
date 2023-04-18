@@ -7,6 +7,7 @@ function TopSlider() {
   const [position, setPosition] = useState(1);
   const [randomDestinations, setRandomDestinations] = useState([]);
   const [randomImage, setRandomImage] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const { destinations } = DestinationsData();
 
@@ -16,12 +17,14 @@ function TopSlider() {
       const filtered = shuffled.slice(0, 3);
 
       setRandomDestinations(filtered);
+      setLoading(false);
     };
 
     filterDestinations();
 
     const setImageNumber = () => {
       const randomNumber = Math.floor(Math.random() * 5) + 1;
+
       setRandomImage(randomNumber);
     };
 
@@ -79,7 +82,9 @@ function TopSlider() {
             to={"/destination" + destination.id}
             style={{
               background: `url(${
-                destination.images["image" + randomImage].medium
+                loading
+                  ? "/images/loading-image.gif"
+                  : destination.images["image" + randomImage].medium
               }) center center/cover no-repeat`,
               transform: position === index ? styles.activeScale : styles.scale,
             }}
