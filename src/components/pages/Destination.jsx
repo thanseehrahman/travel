@@ -1,31 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { DestinationsData } from "../../context/DataContext";
+import { useParams } from "react-router-dom";
 
 function Destination() {
+  const [destination, setDestination] = useState({});
+
+  const { destinations } = DestinationsData();
+  const { id } = useParams();
+
+  useEffect(() => {
+    destinations.forEach((destination) => {
+      if (destination.id === id) {
+        setDestination(destination);
+      }
+    });
+  }, [destinations, id]);
+
   return (
     <Container>
       <Wrap>
-        <Heading>Queenstown</Heading>
+        <Heading>{destination.name}</Heading>
         <Labels>
           <Location>
             <Icon src="/images/icons/location.svg" />
-            <Title>Queenstown, New Zealand</Title>
+            <Title>
+              {destination.name}, {destination.country}
+            </Title>
           </Location>
           <Category>
             <Icon src="/images/icons/category.svg" />
-            <Title>Category</Title>
+            <Title>{destination.category}</Title>
           </Category>
         </Labels>
         <Grid>
-          <MainImage />
-          <Image />
-          <Image />
-          <Image />
-          <Image />
+          <MainImage
+            style={{
+              background: `url(${destination.images.image1.medium}) center center/cover no-repeat`,
+            }}
+          />
+          <Image
+            style={{
+              background: `url(${destination.images.image2.small}) center center/cover no-repeat`,
+            }}
+          />
+          <Image
+            style={{
+              background: `url(${destination.images.image3.small}) center center/cover no-repeat`,
+            }}
+          />
+          <Image
+            style={{
+              background: `url(${destination.images.image4.small}) center center/cover no-repeat`,
+            }}
+          />
+          <Image
+            style={{
+              background: `url(${destination.images.image5.small}) center center/cover no-repeat`,
+            }}
+          />
         </Grid>
         <Content>
           <SubHeading>Description</SubHeading>
-          <Description>Queenstown Description</Description>
+          <Description>{destination.description}</Description>
         </Content>
       </Wrap>
     </Container>
