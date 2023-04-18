@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 function Destination() {
   const [destination, setDestination] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const { destinations } = DestinationsData();
   const { id } = useParams();
@@ -13,6 +14,7 @@ function Destination() {
     destinations.forEach((destination) => {
       if (destination.id === id) {
         setDestination(destination);
+        setLoading(false);
       }
     });
   }, [destinations, id]);
@@ -36,27 +38,47 @@ function Destination() {
         <Grid>
           <MainImage
             style={{
-              background: `url(${destination.images.image1.medium}) center center/cover no-repeat`,
+              background: `url(${
+                loading
+                  ? "/images/loading-image.gif"
+                  : destination.images.image1.medium
+              }) center center/cover no-repeat`,
             }}
           />
           <Image
             style={{
-              background: `url(${destination.images.image2.small}) center center/cover no-repeat`,
+              background: `url(${
+                loading
+                  ? "/images/loading-image.gif"
+                  : destination.images.image2.small
+              }) center center/cover no-repeat`,
             }}
           />
           <Image
             style={{
-              background: `url(${destination.images.image3.small}) center center/cover no-repeat`,
+              background: `url(${
+                loading
+                  ? "/images/loading-image.gif"
+                  : destination.images.image3.small
+              }) center center/cover no-repeat`,
             }}
           />
           <Image
             style={{
-              background: `url(${destination.images.image4.small}) center center/cover no-repeat`,
+              background: `url(${
+                loading
+                  ? "/images/loading-image.gif"
+                  : destination.images.image4.small
+              }) center center/cover no-repeat`,
             }}
           />
           <Image
             style={{
-              background: `url(${destination.images.image5.small}) center center/cover no-repeat`,
+              background: `url(${
+                loading
+                  ? "/images/loading-image.gif"
+                  : destination.images.image5.small
+              }) center center/cover no-repeat`,
             }}
           />
         </Grid>
