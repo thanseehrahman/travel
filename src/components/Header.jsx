@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { DestinationsData } from "../context/DataContext";
 
 function Header() {
   const [sideMenuStatus, setSideMenuStatus] = useState(false);
+  const [dropdownStatus, setDropdownStatus] = useState(false);
+
+  const { destinations } = DestinationsData();
 
   return (
     <Container>
@@ -67,11 +71,41 @@ function Header() {
               >
                 Destinations
               </LinkTo>
-              <Dropdown>
-                <SmallIcon src={"/images/icons/down.svg"} />
+              <Dropdown
+                onClick={() => {
+                  setDropdownStatus(dropdownStatus ? false : true);
+                }}
+              >
+                <SmallIcon
+                  src={
+                    dropdownStatus
+                      ? "/images/icons/up.svg"
+                      : "/images/icons/down.svg"
+                  }
+                />
               </Dropdown>
             </Top>
-            <Bottom></Bottom>
+            <Bottom
+              style={
+                dropdownStatus ? { display: "block" } : { display: "none" }
+              }
+            >
+              {destinations.map((destination, index) => (
+                <Destination
+                  style={{ animationDelay: `${index / 4}s` }}
+                  key={index}
+                >
+                  <Link
+                    to={"/destination/" + destination.id}
+                    onClick={() => {
+                      setSideMenuStatus(false);
+                    }}
+                  >
+                    {destination.name}
+                  </Link>
+                </Destination>
+              ))}
+            </Bottom>
           </Destinations>
         </SideNavigation>
       </SideMenu>
@@ -215,8 +249,35 @@ const SmallIcon = styled(Icon)`
 `;
 
 const Bottom = styled.div`
-  display: none;
   overflow: hidden;
+`;
+
+const Destination = styled.div`
+  padding: 8px 12px;
+  background: #d4d4d4;
+  font-size: 16px;
+  font-weight: 500;
+  color: #202020;
+  border-radius: 4px;
+  margin-bottom: 8px;
+
+  animation-name: fade-down;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+
+  @keyframes fade-down {
+    0% {
+      opacity: 0;
+      visibility: 0;
+      transform: translateY(-6px);
+    }
+    100% {
+      opacity: 1;
+      visibility: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 export default Header;
