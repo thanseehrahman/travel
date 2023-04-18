@@ -31,7 +31,7 @@ const Container = styled.div`
     top: 96px;
   }
   @media (max-width: 480px) {
-    padding: 32px 32px;
+    padding: 60px 32px 32px;
     top: 62px;
   }
 `;
