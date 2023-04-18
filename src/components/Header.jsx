@@ -33,6 +33,17 @@ const TopMenu = styled.div`
   width: 100%;
   padding: 0 60px;
   background: inherit;
+
+  @media (max-width: 1440px) {
+    height: 105px;
+  }
+  @media (max-width: 768px) {
+    height: 96px;
+  }
+  @media (max-width: 480px) {
+    height: 62px;
+    padding: 0 32px;
+  }
 `;
 
 const FlexWrap = styled.div`
@@ -47,11 +58,19 @@ const FlexWrap = styled.div`
 const Logo = styled.img`
   height: 30px;
   display: block;
+
+  @media (max-width: 640px) {
+    height: 20px;
+  }
 `;
 
 const Navigation = styled.nav`
   display: flex;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const LinkTo = styled(Link)`
@@ -66,6 +85,10 @@ const Button = styled(Link)`
   border-radius: 8px;
   font-size: 18px;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default Header;
