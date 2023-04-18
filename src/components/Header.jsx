@@ -254,7 +254,7 @@ const Bottom = styled.div`
 
 const Destination = styled.div`
   padding: 8px 12px;
-  background: #d4d4d4;
+  background: #e5e5e5;
   font-size: 16px;
   font-weight: 500;
   color: #202020;
