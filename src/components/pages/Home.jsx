@@ -32,4 +32,12 @@ const Heading = styled.h1`
   margin-bottom: 20px;
 `;
 
+const Description = styled.p`
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #848484;
+  margin-bottom: 50px;
+`;
+
 export default Home;
