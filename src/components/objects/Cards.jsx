@@ -43,6 +43,7 @@ const Grid = styled.div`
   }
   @media (max-width: 640px) {
     grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
   }
 `;
 
