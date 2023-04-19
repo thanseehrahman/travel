@@ -7,17 +7,26 @@ function About() {
       <Wrap>
         <Heading>About Us - The Escape Co.</Heading>
         <Label>
-          <Title>Your Next Travel Destination</Title>
+          <Title>Venture to New Horizons</Title>
         </Label>
         <Description>
-          Escape & Co. is a travel agency that creates bespoke travels for
-          clients and teams offering them access to exceptional venues, chefs,
-          artisans and talents who make their regions shine. They have a strong
-          experience built over the last 10 years and a glocal network which
-          allows them to create extraordinary escapes. They create emotions for
-          customers ultimately strengthening brand values. They work with
-          retainer and project-based clients in Europe building bridges between
-          the worlds of Art, Gastronomy and Travels.
+          Welcome to The Escape Co., your one-stop destination for unforgettable
+          travel experiences. We are a premier travel agency dedicated to
+          helping you create the perfect getaway, whether you’re looking for a
+          romantic beach vacation or an adventurous trek through the mountains.
+          At The Escape Co., we believe that travel is not just about escaping
+          your daily routine, but also about immersing yourself in new cultures,
+          discovering hidden gems, and creating memories that last a lifetime.
+          That’s why we offer a wide range of travel options to cater to every
+          kind of traveler, from luxury cruises to budget-friendly backpacking
+          trips. Our team of experienced travel consultants are passionate about
+          travel and are dedicated to providing personalized and attentive
+          service to each and every client. We work closely with you to create a
+          customized itinerary that fits your preferences, interests, and
+          budget, ensuring that every detail of your trip is taken care of. With
+          The Escape Co., you can travel with confidence knowing that we have
+          your back every step of the way. Let us help you plan your next escape
+          and discover the world in a whole new way.
         </Description>
       </Wrap>
     </Container>
